@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 function Navbar() {
   const [url,setUrl] = useState(window.location.pathname)
   let [cartData,setCartData]= useState(JSON.parse(localStorage.getItem('cartData'))||0)
+  let [userData,setUserData]= useState(JSON.parse(localStorage.getItem('userData'))||0)
   return (
     <>
       <div className="container-fluid fixed-top">
@@ -37,7 +39,7 @@ function Navbar() {
         <div className="container px-0">
           <nav className="navbar navbar-light bg-white navbar-expand-xl">
             <a href="/" className="navbar-brand">
-              <h1 className="text-primary display-6">Fruitables</h1>
+              <h1 className="text-primary display-6">MyBasket</h1>
             </a>
             <button
               className="navbar-toggler py-2 px-3"
@@ -105,9 +107,25 @@ function Navbar() {
                     {cartData.length||0}
                   </span>
                 </a>
+
+
+
+                {userData?(
+
                 <a href="#" className="my-auto">
                   <i className="fas fa-user fa-2x" />
                 </a>
+                ):(
+                  <Link to="/signin">
+                  <button
+                  type="submit"
+                  className="btn btn-primary border-2 border-secondary rounded-pill text-white h-100"
+                  style={{ top: 0, right: "25%" }}
+                  >
+                  Sign In
+                </button>
+                    </Link>
+                )}
               </div>
             </div>
           </nav>

@@ -4,7 +4,7 @@ const app = express()
 const port = process.env.PORT||8800
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const { Contact, Product } = require("./conn")
+const { Contact, Product,User } = require("./conn")
 app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
@@ -44,15 +44,25 @@ app.post('/shop/search',async(req,res)=>{
 })
 app.post('/signin/user',async(req,res)=>{
   const data=req.body;
+  const existingUser=await User.findOne({email:data["email"],password:data['password']})
+  if(existingUser){
+    return res.json({data:existingUser,message:"User Login Successfully"})
+  }
   console.log(data);
-  
-  res.json({message:"created"})
+  res.json({message:"User credentials invalid"})
 })
 app.post('/signup/user',async(req,res)=>{
   const data=req.body;
+  const existingUser=await User.findOne({email:data["email"]})
+  if(existingUser){
+    return res.json({message:"User Already exist"})
+  }
   console.log(data);
-  const newContact  = await Contact.create(data);
-  const saveContact = await newContact.save()
+  if(data["password"]!=data["confirmpw"]){
+    return res.json({message:"Password mismatch"})
+  }
+  const newUser  = await User.create(data);
+  const saveUser = await newUser.save()
   
   res.json({message:"created"})
 })

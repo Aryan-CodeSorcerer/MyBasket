@@ -2,10 +2,11 @@ import React, { useState } from 'react'
 import Navbar from '../Components/Navbar'
 import Footer from '../Components/Footer'
 import SinglePageHeader from '../Components/SinglePageHeader'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Signup() {
     let [obj, setObj] = useState({ name: "", email: "", phone: "", password: "", confirmpw: "" })
+    const navigate=useNavigate();
     const handleChange = async(e) => {
         const {name, value}=e.target
         let data={...obj,[name]:value}
@@ -26,6 +27,8 @@ function Signup() {
         const jsonreso = await respo.json()
         console.log(jsonreso);
         window.alert(jsonreso["message"])
+        if(jsonreso["message"]=="created"){
+        navigate("/signin")}
 
     }
 
