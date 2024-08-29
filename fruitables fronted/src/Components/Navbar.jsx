@@ -111,10 +111,11 @@ function Navbar() {
 
 
                 {userData?(
-
-                <a href="#" className="my-auto">
+                  <Link to="/profile"
+                 className="my-auto">
                   <i className="fas fa-user fa-2x" />
-                </a>
+                  </Link>
+                
                 ):(
                   <Link to="/signin">
                   <button

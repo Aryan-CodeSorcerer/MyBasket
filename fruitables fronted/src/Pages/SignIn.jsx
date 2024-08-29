@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import Navbar from '../Components/Navbar'
 import SinglePageHeader from '../Components/SinglePageHeader'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Footer from '../Components/Footer'
 
 function SignIn() {
   let [obj,setObj]=useState({email:"",password:""})
+  const navigate =useNavigate();
   const handleChange = async(e) => {
     const {name, value}=e.target
     let data={...obj,[name]:value}
@@ -20,18 +21,20 @@ const handleSubmit=async(e)=>{
     },
     body: JSON.stringify(obj),
 })
+
   const jsonresponse=await response.json()
   console.log(jsonresponse);
   window.alert(jsonresponse["message"])
   if(jsonresponse["message"]=="User Login Successfully"){
     localStorage.setItem("userData",JSON.stringify(jsonresponse["data"]))
+    navigate('/')
   }
   
 }
  return (
     <>
     <Navbar/>
-    <SinglePageHeader one={{title:"signin"}}/>
+    <SinglePageHeader one={{title:"SignIn"}}/>
     <div>
         <h1>SignIn</h1>
     <form onSubmit={handleSubmit}>

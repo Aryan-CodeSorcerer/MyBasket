@@ -4,7 +4,7 @@ function SinglePageHeader({one}) {
     <>
       <div className="container-fluid page-header py-5">
         <h1 className="text-center text-white display-6">{one["title"]}</h1>
-        {(one["title"]=="SignIn"||"Signup")?"":<ol className="breadcrumb justify-content-center mb-0">
+        {(one["title"]=="SignIn"||one["title"]=="SignUp")?"":<ol className="breadcrumb justify-content-center mb-0">
           <li className="breadcrumb-item">
             <a href="#">Home</a>
           </li>
