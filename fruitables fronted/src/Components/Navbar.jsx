@@ -76,7 +76,7 @@ function Navbar() {
                       Cart
                     </a>
                     <a href="/checkout" className="dropdown-item">
-                      Chackout
+                      Checkout
                     </a>
                     <a href="/testimonial" className="dropdown-item">
                       Testimonial
@@ -91,14 +91,17 @@ function Navbar() {
                 </a>
               </div>
               <div className="d-flex m-3 me-0">
+
+                <Link to={'/shop'}>
                 <button
                   className="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
                   data-bs-toggle="modal"
                   data-bs-target="#searchModal"
-                >
+                  >
                   <i className="fas fa-search text-primary" />
                 </button>
-                <a href="#" className="position-relative me-4 my-auto">
+                  </Link>
+                <a href="/cart" className={`position-relative me-4 my-auto${(url=="/cart")}`}>
                   <i className="fa fa-shopping-bag fa-2x" />
                   <span
                     className="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"

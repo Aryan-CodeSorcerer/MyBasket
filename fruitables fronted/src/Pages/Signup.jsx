@@ -28,7 +28,7 @@ function Signup() {
         console.log(jsonreso);
         window.alert(jsonreso["message"])
         if(jsonreso["message"]=="created"){
-        navigate("/signin")}
+        navigate("/")}//"/signin"
 
     }
 
@@ -87,7 +87,7 @@ function Signup() {
                     </button>
                 </form>
                 <span>
-                    already have an account?
+                    Already have an account?
                     <Link to="/signin">SignIn</Link>
                 </span>
             </div>

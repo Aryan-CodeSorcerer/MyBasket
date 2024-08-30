@@ -6,14 +6,10 @@ import SinglePageHeader from "../Components/SinglePageHeader";
 function Cart() {
   return (
     <>
-      {/* navbar */}
+      
       <Navbar />
-      {/* single page header */}
       <SinglePageHeader one={{title:"Cart"}}/>
-      {/* <BannerSection /> */}
-      {/* cartpage */}
       <CartPage />
-      {/* footer  */}
       <Footer />
     </>
   );

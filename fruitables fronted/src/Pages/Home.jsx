@@ -16,7 +16,6 @@ import BackToTop from "../Components/BackToTop";
 function Home() {
   return (
     <>
-      {/* navbar */}
       <Navbar />
       <Hero />
       <HeaderFeatures/>
@@ -28,7 +27,6 @@ function Home() {
       <Fact/>
       <Tastimonial/>
       <BackToTop/>
-      {/* <h1>Home</h1> */}
       <Footer />
     </>
   );
